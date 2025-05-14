@@ -1,14 +1,26 @@
-import React from "react"
-import {View, Text, Image} from "react-native"
+import React, {useState} from "react"
+import {View, Text, Image, Button} from "react-native"
 
 function App(){
-  let nameCaba = "Arthur"
+  const [nome, setNome] = useState("Fabrica")
+  const [idade, setIdade] = useState(10)
+
+  function entrar(name, idade){
+    setNome(name)
+    setIdade(idade)
+    alert ("Entrou!!!")
+  }
   return(
+    
     <View style= {{padding: 20}}>
-      <Text>${nameCaba}</Text>
-      <Text style= {{color: "#F00FFF", fontSize: 35, fontWeight: 30}}>Meu primero App</Text>
-      
-  <Logo Largura ={100}  Altura ={100} Name ={"Fabrica do gás"}/>
+      <Logo Largura ={100}  Altura ={100} Name ={"Fabrica do gás"}/>
+      <Text>{nome}</Text>
+       <Text>{idade}</Text>
+      <Text style= {{color: "#F00FFF", fontSize: 35, fontWeight: 30}}>
+      Meu primero App
+      </Text>
+      <Button title = "Mudar Nome" onPress={()=> entrar("Arthur Fabrigas", 18)} />
+  
 
     </View>
   )
