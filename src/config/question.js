@@ -63,7 +63,7 @@ export const reactQuestions =  [
     "title": "Qual comando inicia o projeto com o Expo CLI?",
     "option": [
       "expo start",
-      "expo creat",
+      "expo create",
       "npm run dev",
       "npx react-native start"
     ],
