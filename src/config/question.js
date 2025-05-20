@@ -1,102 +1,103 @@
 export const reactQuestions =  [
   {
-    "title": "O que é o React Native?",
+    "id": 1,
+    "title": "1. Qual fonte de energia renovável é destaque na matriz energética do Piauí?",
     "option": [
-      "Um framework para desenvolvimento web",
-      "Uma biblioteca de animação para React",
-      "Um framework para criar apps nativos usando JavaScript",
-      "Um banco de dados NoSQL"
+      "A) Hidrelétrica",
+      "B) Solar",
+      "C) Biomassa"
     ],
-    "correctAnswer": "Um framework para criar apps nativos usando JavaScript"
+    "correctAnswer": "B) Solar"
   },
   {
-    "title": "Qual comando inicializa um novo projeto com React Native CLI?",
+    "id": 2,
+    "title": "2. Qual destas características é típica da energia eólica no Piauí?",
     "option": [
-      "react-native init MyApp",
-      "npx create-react-native-app MyApp",
-      "expo start",
-      "npm install react-native"
+      "A) Baixo potencial de ventos durante o ano",
+      "B) Alta concentração de parques no litoral e no interior",
+      "C) Alto custo e baixa eficiência"
     ],
-    "correctAnswer": "react-native init MyApp"
+    "correctAnswer": "B) Alta concentração de parques no litoral e no interior"
   },
   {
-    "title": "Qual é a principal diferença entre React Native e React?",
+    "id": 3,
+    "title": "3. Qual município piauiense abriga um dos maiores complexos de energia solar da América Latina?",
     "option": [
-      "React Native não usa componentes",
-      "React Native utiliza componentes nativos ao invés de HTML",
-      "React Native roda no navegador",
-      "React Native não suporta JavaScript"
+      "A) Floriano",
+      "B) São João do Piauí",
+      "C) Piripiri"
     ],
-    "correctAnswer": "React Native utiliza componentes nativos ao invés de HTML"
+    "correctAnswer": "B) São João do Piauí"
   },
   {
-    "title": "Qual desses componentes é específico do React Native?",
+    "id": 4,
+    "title": "4. O que é hidrogênio verde?",
     "option": [
-      "<div>",
-      "<Text>",
-      "<section>",
-      "<body>"
+      "A) Hidrogênio obtido por fusão nuclear",
+      "B) Hidrogênio produzido com energia fóssil",
+      "C) Hidrogênio obtido a partir de fontes renováveis"
     ],
     "correctAnswer": "<Text>"
   },
   {
-    "title": "Qual biblioteca é comumente usada para navegação em apps React Native?",
+    "id": 5,
+    "title": "5. Qual dessas iniciativas contribui diretamente para a transição energética?",
     "option": [
-      "React Router",
-      "React Native Navigation",
-      "React Navigation",
-      "Vue Router"
+      "A) Aumento da queima de carvão",
+      "B) Expansão de energias renováveis",
+      "C) Construção de usinas nucleares"
     ],
     "correctAnswer": "React Navigation"
   },
   {
-    "title": "Como aplicar estilos em React Native?",
+    "id": 6,
+    "title": "6. Qual é o impacto positivo das usinas solares instaladas no semiárido piauiense?",
     "option": [
-      "Com CSS puro",
-      "Usando arquivos .scss",
-      "Utilizando o objeto StyleSheet do React Native",
-      "Com a tag <style>"
+      "A) Aumentam a temperatura da região",
+      "B) Geração de empregos e renda local",
+      "C) Desmatamento de áreas verdes"
     ],
-    "correctAnswer": "Utilizando o objeto StyleSheet do React Native"
+    "correctAnswer": "B) Geração de empregos e renda local"
   },
   {
-    "title": "Qual comando inicia o projeto com o Expo CLI?",
+    "id": 7,
+    "title": "7. A transição energética busca substituir fontes fósseis por fontes...",
     "option": [
-      "expo start",
-      "expo create",
-      "npm run dev",
-      "npx react-native start"
+      "A) Não renováveis",
+      "B) Intermitentes",
+      "C) Renováveis e sustentáveis",
     ],
-    "correctAnswer": "expo start"
+    "correctAnswer": "C) Renováveis e sustentáveis"
   },
   {
-    "title": "O que é o Expo no contexto do React Native?",
+    "id": 8,
+    "title": "8. Qual destes é um exemplo de inovação tecnológica voltada à energia limpa?",
     "option": [
-      "Um novo tipo de componente",
-      "Um compilador JavaScript",
-      "Uma ferramenta que facilita o desenvolvimento com React Native",
-      "Um serviço de hospedagem de apps"
+      "A) Carvão ativado",
+      "B) Paineis solares bifaciais",
+      "C) Termelétricas a diesel"
     ],
-    "correctAnswer": "Uma ferramenta que facilita o desenvolvimento com React Native"
+    "correctAnswer": "B) Paineis solares bifaciais"
   },
   {
-    "title": "Qual hook é usado para gerenciar estado em componentes funcionais?",
+    "id": 9,
+    "title": "9. Qual é um benefício direto do uso de energias renováveis no Piauí?",
     "option": [
-      "useEffect",
-      "useRef",
-      "useState",
-      "useMemo"
+      "A) Aumento da emissão de CO₂",
+      "B) Redução na conta de luz para grandes consumidores",
+      "C) Redução da dependência de fontes poluentes",
+
     ],
-    "correctAnswer": "useState"
+    "correctAnswer": "C) Redução da dependência de fontes poluentes"
   },
   {
-    "title": "Como se chama o componente usado para listas com melhor performance no React Native?",
+    "id": 10,
+    "title": "10. Que tipo de tecnologia pode ser usada para armazenar energia gerada por fontes",
     "option": [
-      "ScrollView",
-      "ListView",
-      "FlatList",
-      "TableView"
+      "A) Baterias de lítio",
+      "B) Transformadores industriais",
+      "C) Geradores a diesel",
     ],
-    "correctAnswer": "FlatList"
+    "correctAnswer": "A) Baterias de lítio"
   }
 ]
