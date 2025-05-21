@@ -29,9 +29,14 @@ const Splash = ({ navigation }) => {
         <Text style={tw`text-white text-lg`}>O seu preogresso será mostrado no topo.</Text>
         <Text style={tw`text-white text-lg`}>Você verá a sua pontuação no final do Quiz.</Text>
       </View>
-      <Pressable style={tw`bg-purple-500 mt-10 p-6 py-1 rounded`} onPress={() => navigation.navigate("Question")}>
+      <View style={tw`flex-row gap-4`}>
+        <Pressable style={tw`bg-purple-500 mt-10 p-6 py-1 rounded`} onPress={() => navigation.navigate("Form")}>
         <Text style={tw`text-white text-lg`}>Iniciar</Text>
       </Pressable>
+      <Pressable style={tw`bg-purple-500 mt-10 p-6 py-1 rounded`} onPress={() => navigation.navigate("Users")}>
+        <Text style={tw`text-white text-lg`}>Inscritos</Text>
+      </Pressable>
+      </View>
     </View>
 </View>
   )
