@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/netinfo": "^11.4.1",
     "@react-navigation/native-stack": "^7.3.13",
     "expo": "^53.0.9",
     "expo-sqlite": "~15.2.10",

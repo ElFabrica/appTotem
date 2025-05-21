@@ -1,22 +1,25 @@
-import { View, Text, ScrollView, Pressable } from 'react-native';
+import { View, Text, ScrollView, Pressable, Alert } from 'react-native';
 import { createStore } from "tinybase";
 import { useEffect, useState } from 'react';
 import tw from 'twrnc';
 import { store, TABLE_NAME, initializeStore } from "../config/store.js"
+import NetInfo from '@react-native-community/netinfo';
 
 
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [responseData, setResponseData] = useState(null);
+  const [isConnected, setIsConnected] = useState(null);
 
   // Função para obter os dados da tabela
 
-  const UpdateItems = async ({id, name, email}) => {
+  const UpdateItems = async ({id, name, email, phone}) => {
     try {
       const data = {
         email: email,
         name: name,
+        phone: phone,
         id: id
       }
 
@@ -31,15 +34,20 @@ export default function Users() {
       setResponseData(response.data); // Atualiza o estado com a resposta
       console.log(response.data); // Exibe no console a resposta do servidor
     } catch (error) {
+      Alert.alert("Um erro inesperado aconteceu, pode ser conexão de rede ou inexistente.")
       console.error('Erro:', error); // Captura e exibe erros
     }
     ;
   };
 
   const loopUpdateItems = async () => {
+    
     for (let item of users) {
-    await UpdateItems({id:item.id, name:item.name, email:item.email}); // Aguarda a requisição terminar antes de passar para a próxima
+    await UpdateItems({id:item.id, name:item.name, email:item.email, phone:item.phone}); // Aguarda a requisição terminar antes de passar para a próxima
   }
+    
+  Alert.alert("Dados Lançados com sucesso")
+  console.log("Foi")
 };
   
   function get() {
@@ -48,6 +56,7 @@ export default function Users() {
       id,
       name: String(user.name),
       email: String(user.email),
+      phone: String(user.phone)
 
     }));
 
@@ -80,13 +89,15 @@ export default function Users() {
       <Text style={tw`text-xl font-medium`}>Inscritos</Text>
       <View style={tw`mt-6 w-full `}>
         <View style={tw`flex-row  justify-between`}>
-        <Text style={tw`text-2xl text-center min-w-36 `}>Nome</Text>
-         <Text style={tw`text-2xl text-center min-w-36`}>Email</Text>
+        <Text style={tw`text-1xl text-center min-w-30 `}>Nome</Text>
+        <Text style={tw`text-1xl text-center min-w-30`}>Email</Text>
+        <Text style={tw`text-1xl text-center min-w-30`}>Telefone</Text>
          </View>
         {users.length > 0 ? (users.map((item) => (
             <View key={item.id} style={tw`flex-row  justify-between`}>
-              <Text style={tw`text-xl text-base text-center min-w-36`}>{item.name}</Text>
-              <Text style={tw`text-xl text-base text-center min-w-36`}>{item.email}</Text>
+              <Text style={tw`text-xl text-base text-center min-w-30`}>{item.name}</Text>
+              <Text style={tw`text-xl text-base text-center min-w-30`}>{item.email}</Text>
+              <Text style={tw`text-xl text-base text-center min-w-30`}>{item.phone}</Text>
             </View>
           ))
         ) : (

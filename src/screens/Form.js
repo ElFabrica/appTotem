@@ -34,7 +34,7 @@ console.log(store.getTable(TABLE_NAME))
       return;
     }
 
-    if (!(name && email)) {
+    if (!(name && email && phone)) {
       Alert.alert("Erro", "Preencha todos os dados");
       return;
     }
@@ -47,13 +47,14 @@ console.log(store.getTable(TABLE_NAME))
     const id = Math.random().toString(30).substring(2, 20);  // Gerar ID único
     try {
       // Tente adicionar a linha ao store e verificar se houve erro
-      store.setRow(TABLE_NAME, email, { name, email });
+      store.setRow(TABLE_NAME, id, { name, email, phone });
       console.log("Usuário adicionado ao banco com sucesso");
       
 
       // Limpeza do formulário
       setName("");
       setEmail("");
+      setPhone("")
 
       // Navega para a próxima tela
       navigation.navigate("Question");
@@ -93,7 +94,18 @@ console.log(store.getTable(TABLE_NAME))
           value={email}
           onChangeText={setEmail}
         />
-      </View>
+             </View>
+                   <View style={tw`w-full mb-4`}>
+         <Text style={tw`text-lg font-bold`}>Telefone</Text>
+      <MaskInput
+        value={phone}
+        onChangeText={(setPhone)}
+        mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+        keyboardType="numeric"
+        placeholder="(00) 00000-0000"
+        style={tw`p-4 border-2 border-purple-500 w-full rounded-md`}
+      />
+        </View>
 
       <Pressable
         style={[
