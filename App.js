@@ -4,7 +4,7 @@ import AppNavigator from './src/navegation/appNavegator';
 export default function App() {
 
  /* useEffect(() => {
-    navigate("Home"); // Isso agora funciona
+    navigate("Home"); // Ao gerar o app, o apk lança o usuário para essa tela em branca. Remova esses comentários antes de gerar o biuld.
   }, []);*/
 
   return <AppNavigator />;

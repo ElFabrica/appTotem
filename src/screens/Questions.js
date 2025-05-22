@@ -13,19 +13,17 @@ const Questions = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
 
-  useEffect(() => {
-  }, [currentQuestionIndex, selectedOption]);
-
+  //Vai para a próxima pergunta com alguams funcionalidades
   const handleNext = () => {
     if (currentQuestionIndex === reactQuestions.length - 1) {
-      navigation.navigate("Score", { score: score });
+      navigation.navigate("Score", { score: score }); //Se for a ultima pergunta, redireciona para a página de Score
     } else {
       if (!selectedOption) {
         return;
       }
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedOption(null);
-      setIsCorrect(null);
+      setCurrentQuestionIndex(currentQuestionIndex + 1); //Vai para a próxima pergunta
+      setSelectedOption(null); //Reseta a variável salva a opção selecionada
+      setIsCorrect(null); //Reseta a função que verifica se está correta
     }
   };
 

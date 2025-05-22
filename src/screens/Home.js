@@ -9,7 +9,7 @@ const Splash = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [chave, setChave] = useState('');
 
-
+//Função de verificar senha e ir para o acesso restrito
 function acessoRestrito() {
   if (chave !== "Fala1234@") {
     Alert.alert("Código inválido")
@@ -39,7 +39,7 @@ function acessoRestrito() {
         <Text style={tw`text-blue-500  font-medium text-5xl mb-5 leading-10`}>
           Bem-vindo ao{"\n"} Questionário
         </Text>
-        
+        {/* Animação */}
         <LottieView
           source={require('../animations/Estudant.json')}
           autoPlay
@@ -48,6 +48,7 @@ function acessoRestrito() {
         />
         <Text style={tw`text-blue-500  font-bold text-3xl text-center mb-5`}>Instruções</Text>
 
+        {/* Instruções */}
         <View style={tw`bg-blue-800 p-4 rounded-lg w-95 items-center justify-center`}>
           <Text style={tw`text-white text-lg text-justify`}>Cada pergunta do quiz há somente 4 alternativas.</Text>
           <Text style={tw`text-white text-lg text-justify`}>O seu progresso será mostrado no topo.</Text>
@@ -55,6 +56,7 @@ function acessoRestrito() {
         </View>
 
         <View style={tw`flex-row gap-4`}>
+          {/* Botão de iniciar */}
           <Pressable
             style={tw`bg-blue-800 mt-10 p-6 py-1 rounded py-3`}
             onPress={() => navigation.navigate("Formulário")}>
@@ -82,7 +84,7 @@ function acessoRestrito() {
               onChangeText={setChave}
             />
 
-            <View style={tw`flex-row justify-between`}>
+            <View style={tw`flex-row justify-between`}>   
               <Pressable
                 style={tw`bg-gray-400 px-5 py-2 rounded-md`}
                 onPress={() => [setModalVisible(false), setChave("")]}

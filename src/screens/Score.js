@@ -56,7 +56,7 @@ export default function Score({ navigation }) {
         Sua pontuação foi {score} pontos
       </Text>
 
-      <Pressable style={tw`bg-blue-800 p-4 rounded-md mt-6`} onPress={voltar}>
+      <Pressable style={tw`bg-blue-800 p-4 rounded-md mt-6`} onPress={voltar}> 
         <Text style={tw`text-white text-lg text-center font-bold text-2xl`}>
           Voltar
         </Text>
