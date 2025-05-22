@@ -1,9 +1,7 @@
-import { View, Text, ScrollView, Pressable, Alert } from 'react-native';
-import { createStore } from "tinybase";
+import { View, Text, Pressable, Alert } from 'react-native';
 import { useEffect, useState } from 'react';
 import tw from 'twrnc';
 import { store, TABLE_NAME, initializeStore } from "../config/store.js"
-import NetInfo from '@react-native-community/netinfo';
 
 
 export default function Users() {

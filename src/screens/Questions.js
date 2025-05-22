@@ -3,16 +3,19 @@ import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import React from "react";
 import { reactQuestions } from "../config/question";
 import tw from "twrnc";
-import {AsyncStorage} from 'react-native';
+import * as Progress from 'react-native-progress';
+
 
 const Questions = ({ navigation }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [score, setScore] = useState(0)
+  const [step, setStep] = useState(0)
   const [selectedOption, setSelectedOption] = useState(null)
   const [isCorrect, setIsCorrect] = useState(null)
 
   const handleNext = () =>{
     if(currentQuestionIndex === reactQuestions.length-1){
+      setStep("")
         navigation.navigate("Score", { score:score })
     }else{
       if(!selectedOption){
@@ -29,7 +32,8 @@ const Questions = ({ navigation }) => {
   console.log({isCorrect})
 
   const handleOptionPress =(pressedOption)=>{
-
+        setStep((step) => step + 0.2)
+        console.log("Next")
     if(selectedOption){
       return
     }
@@ -39,11 +43,16 @@ const Questions = ({ navigation }) => {
     setIsCorrect(isAnwserCorrect)
 
       if(isAnwserCorrect){
-        setScore((prevScore)=>prevScore+10)
+        setScore((prevScore)=>prevScore + 20) //Aumentar o Score do sujeito
+
       }
 }
   return (
-    <View style ={tw`mt-6 p-4 flex-1 `}>
+    <View style ={tw`mt- p-4 flex-1 `}>
+        <View style={tw`w-full items-center mb-5 justify-center`}>
+          <Progress.Bar progress={step} width={"100%"} height={15} color="rgba(157, 9, 255, 1)" borderColor="#ccc" 
+ />
+        </View>
       <Text style ={tw`text-2xl mb-4`}>{reactQuestions[currentQuestionIndex].title}</Text>
       {reactQuestions[currentQuestionIndex].option.map((option, index) => (
         
