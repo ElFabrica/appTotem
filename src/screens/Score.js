@@ -48,15 +48,15 @@ export default function Score({ navigation }) {
         loop
         style={tw`w-1/2 h-1/4`}
       />
-      <Text style={tw`text-purple-600 font-medium text-5xl mb-3 leading-10 text-center`}>
+      <Text style={tw`text-blue-500 font-medium text-5xl mb-3 leading-10 text-center`}>
         Parabéns!!!
       </Text>
-      <Text style={tw`text-purple-600 font-medium text-3xl mb-5 leading-10 text-center`}>
+      <Text style={tw`text-blue-500 font-medium text-3xl mb-5 leading-10 text-center`}>
         Você concluiu seu formulário{"\n"}
         Sua pontuação foi {score} pontos
       </Text>
 
-      <Pressable style={tw`bg-purple-500 p-4 rounded-md mt-6`} onPress={voltar}>
+      <Pressable style={tw`bg-blue-800 p-4 rounded-md mt-6`} onPress={voltar}>
         <Text style={tw`text-white text-lg text-center font-bold text-2xl`}>
           Voltar
         </Text>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { View, Text, Pressable, TextInput, Alert } from "react-native";
+import { View, Text, Pressable, TextInput, Alert,ScrollView, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, 
+Keyboard } from "react-native";
 import validator from 'email-validator';
 import tw from "twrnc";
 import LottieView from 'lottie-react-native';
@@ -25,7 +26,6 @@ export default function Form({ navigation }) {
         Alert.alert("Erro", "Não foi possível carregar o banco de dados.");
       }
     };
-console.log(store.getTable(TABLE_NAME))
     loadData();
   }, []);
 
@@ -66,7 +66,15 @@ console.log(store.getTable(TABLE_NAME))
   }
 
   return (
-    <View style={tw`flex-1 justify-center px-4 mb-20`}>
+   <KeyboardAvoidingView
+  behavior={Platform.OS === "ios" ? "padding" : "height"}
+  style={tw`flex-1`}
+>
+  <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <ScrollView
+      contentContainerStyle={tw`flex-grow px-4 mb-20`}
+      keyboardShouldPersistTaps="handled"
+    >
       <View style={tw`items-center mt-4`}>
         <LottieView
           source={require('../animations/Form.json')}
@@ -75,43 +83,51 @@ console.log(store.getTable(TABLE_NAME))
           style={tw`w-1/2 h-40`}
         />
       </View>
-      <Text style={tw`text-3xl font-bold text-center`}>Cadastro</Text>
 
+      <Text style={tw`text-blue-500 font-medium text-4xl font-bold text-center`}>
+        Cadastro
+      </Text>
+
+      {/* NOME */}
       <View style={tw`w-full mb-4`}>
         <Text style={tw`text-lg font-bold`}>Nome</Text>
         <TextInput
-          style={tw`p-4 border-2 border-purple-500 w-full rounded-md`}
-          placeholder="Fulano de tal"
+          style={tw`p-4 border-2 border-blue-500 w-full rounded-md`}
+          placeholder="John"
           value={name}
           onChangeText={setName}
         />
       </View>
 
+      {/* EMAIL */}
       <View style={tw`w-full mb-4`}>
         <Text style={tw`text-lg font-bold`}>Email</Text>
         <TextInput
-          style={tw`p-4 border-2 border-purple-500 w-full rounded-md`}
-          placeholder="Fulano@gmail.com"
+          style={tw`p-4 border-2 border-blue-500 w-full rounded-md`}
+          placeholder="seu@email.com"
           value={email}
           onChangeText={setEmail}
         />
-             </View>
-                   <View style={tw`w-full mb-4`}>
-         <Text style={tw`text-lg font-bold`}>Telefone</Text>
-      <MaskInput
-        value={phone}
-        onChangeText={(setPhone)}
-        mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-        keyboardType="numeric"
-        placeholder="(00) 00000-0000"
-        style={tw`p-4 border-2 border-purple-500 w-full rounded-md`}
-      />
-        </View>
+      </View>
 
+      {/* TELEFONE */}
+      <View style={tw`w-full mb-4`}>
+        <Text style={tw`text-lg font-bold`}>Telefone</Text>
+        <MaskInput
+          value={phone}
+          onChangeText={setPhone}
+          mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+          keyboardType="numeric"
+          placeholder="(00) 00000-0000"
+          style={tw`p-4 border-2 border-blue-500 w-full rounded-md`}
+        />
+      </View>
+
+      {/* BOTÃO */}
       <Pressable
         style={[
           tw`p-4 rounded-md mt-6 w-full justify-center items-center`,
-          loaded ? tw`bg-purple-500` : tw`bg-gray-400`
+          loaded ? tw`bg-blue-800` : tw`bg-gray-400`
         ]}
         onPress={onSubmit}
         disabled={!loaded}
@@ -120,6 +136,9 @@ console.log(store.getTable(TABLE_NAME))
           {loaded ? "Começar" : "Carregando..."}
         </Text>
       </Pressable>
-    </View>
+    </ScrollView>
+  </TouchableWithoutFeedback>
+</KeyboardAvoidingView>
+
   );
 }

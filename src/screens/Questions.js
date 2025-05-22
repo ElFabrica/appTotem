@@ -52,7 +52,7 @@ const Questions = ({ navigation }) => {
     <View style={tw`p-4 flex-1`}>
       <View style={tw`w-full items-center mb-5 justify-center`}>
         <Progress.Bar
-          color="rgb(153, 0, 255)"
+          color="rgb(59 130 246)"
           progress={(currentQuestionIndex + 1) / reactQuestions.length}
           width={400}
           height={15}
@@ -72,7 +72,7 @@ const Questions = ({ navigation }) => {
               ? isCorrect
                 ? "bg-green-100 border-green-500"
                 : "bg-red-100 border-red-500"
-              : "border-purple-500"
+              : "border-blue-500"
           }`}
           onPress={() => {
             handleOptionPress(option);
@@ -83,7 +83,7 @@ const Questions = ({ navigation }) => {
       ))}
 
       <Pressable
-        style={tw`bg-purple-500 p-4 rounded-md mt-6 ${
+        style={tw`bg-blue-800 p-4 rounded-md mt-6 ${
           selectedOption ? "opacity-100" : "opacity-60"
         }`}
         onPress={handleNext}

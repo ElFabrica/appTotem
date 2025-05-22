@@ -36,7 +36,7 @@ function acessoRestrito() {
 
       {/* Conteúdo principal */}
       <View style={tw`flex-1 justify-center items-center`}>
-        <Text style={tw`text-purple-600 font-medium text-5xl mb-5 leading-10`}>
+        <Text style={tw`text-blue-500  font-medium text-5xl mb-5 leading-10`}>
           Bem-vindo ao{"\n"} Questionário
         </Text>
         
@@ -46,19 +46,19 @@ function acessoRestrito() {
           loop
           style={tw`w-5/6 h-1/3`}
         />
-        <Text style={tw`text-4xl text-center mb-5`}>Instruções</Text>
+        <Text style={tw`text-blue-500  font-bold text-3xl text-center mb-5`}>Instruções</Text>
 
-        <View style={tw`bg-purple-500 p-4 rounded-lg w-80 items-center justify-center`}>
-          <Text style={tw`text-white text-lg`}>Cada pergunta do quiz há somente 4 alternativas.</Text>
-          <Text style={tw`text-white text-lg`}>O seu progresso será mostrado no topo.</Text>
-          <Text style={tw`text-white text-lg`}>Você verá a sua pontuação no final do quiz.</Text>
+        <View style={tw`bg-blue-800 p-4 rounded-lg w-95 items-center justify-center`}>
+          <Text style={tw`text-white text-lg text-justify`}>Cada pergunta do quiz há somente 4 alternativas.</Text>
+          <Text style={tw`text-white text-lg text-justify`}>O seu progresso será mostrado no topo.</Text>
+          <Text style={tw`text-white text-lg text-justify`}>Você verá a sua pontuação no final do quiz.</Text>
         </View>
 
         <View style={tw`flex-row gap-4`}>
           <Pressable
-            style={tw`bg-purple-500 mt-10 p-6 py-1 rounded`}
+            style={tw`bg-blue-800 mt-10 p-6 py-1 rounded py-3`}
             onPress={() => navigation.navigate("Formulário")}>
-            <Text style={tw`text-white text-lg`}>Iniciar</Text>
+            <Text style={tw`text-white font-bold text-3xl`}>Iniciar</Text>
           </Pressable>
         </View>
       </View>
@@ -90,7 +90,7 @@ function acessoRestrito() {
                 <Text style={tw`text-white text-base`}>Cancelar</Text>
               </Pressable>
               <Pressable
-                style={tw`bg-purple-500 px-5 py-2 rounded-md`}
+                style={tw`bg-blue-500 px-5 py-2 rounded-md`}
                 onPress={() => {
                   acessoRestrito()
                 }}
