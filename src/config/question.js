@@ -28,7 +28,7 @@ export const reactQuestions =  [
       "B) Hidrogênio produzido com energia fóssil",
       "C) Hidrogênio obtido a partir de fontes renováveis"
     ],
-    "correctAnswer": "<Text>"
+    "correctAnswer": "C) Hidrogênio obtido a partir de fontes renováveis"
   },
   {
     "id": 4,

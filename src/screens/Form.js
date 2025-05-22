@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { View, Text, Pressable, TextInput, Alert } from "react-native";
-import validate from "react-native-email-validator";
+import validator from 'email-validator';
 import tw from "twrnc";
 import LottieView from 'lottie-react-native';
 import { store, TABLE_NAME, initializeStore } from "../config/store.js"; // ✅ import externo
 import MaskInput from 'react-native-mask-input'
+
 
 export default function Form({ navigation }) {
   const [name, setName] = useState("");
@@ -39,7 +40,7 @@ console.log(store.getTable(TABLE_NAME))
       return;
     }
 
-    if (!validate(email)) {
+    if (!validator.validate(email)) {
       Alert.alert("Erro", "E-mail inválido");
       return;
     }
