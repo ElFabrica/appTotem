@@ -65,7 +65,7 @@ export default function Users() {
       phone: String(user.phone)
     }));
     setUsers(response);
-    console.log('📦 Dados atuais:', data);
+   /*console.log('📦 Dados atuais:', data); //Mostrar dados no console*/
   };
 
   useEffect(() => {

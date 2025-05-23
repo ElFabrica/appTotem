@@ -48,7 +48,7 @@ const Questions = ({ navigation }) => {
 
   return (
     <View style={tw`p-4 flex-1`}>
-      <View style={tw`w-full items-center mb-5 justify-center`}>
+      <View style={tw`w-full items-center mb-5 mt-8 justify-center`}>
         <Progress.Bar
           color="rgb(59 130 246)"
           progress={(currentQuestionIndex + 1) / reactQuestions.length}
@@ -116,18 +116,19 @@ const Questions = ({ navigation }) => {
 
             <View style={tw`flex-row justify-around`}>
               <Pressable
+                style={tw`bg-gray-300 px-5 py-2 rounded-md`}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={tw`text-black font-bold`}>Não</Text>
+              </Pressable>
+              <Pressable
                 style={tw`bg-red-500 px-5 py-2 rounded-md`}
                 onPress={handleExit}
               >
                 <Text style={tw`text-white font-bold`}>Sim</Text>
               </Pressable>
 
-              <Pressable
-                style={tw`bg-gray-300 px-5 py-2 rounded-md`}
-                onPress={() => setModalVisible(false)}
-              >
-                <Text style={tw`text-black font-bold`}>Não</Text>
-              </Pressable>
+
             </View>
           </View>
         </View>

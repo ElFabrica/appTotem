@@ -26,8 +26,12 @@ function AppNavigator() {
         <Stack.Screen
           name="Formulário"
           component={Form}
+          
         />
-        <Stack.Screen name="Question" component={Question} />
+        <Stack.Screen name="Question" component={Question}
+        options={{
+        headerShown: false,
+          }}  />
         <Stack.Screen
           options={{
             headerShown: false,
