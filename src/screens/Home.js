@@ -49,9 +49,9 @@ function acessoRestrito() {
         <Text style={tw`text-blue-500  font-bold text-3xl text-center mb-5`}>Instruções</Text>
 
         {/* Instruções */}
-        <View style={tw`bg-blue-800 p-4 rounded-lg w-95 items-center justify-center`}>
-          <Text style={tw`text-white text-lg text-justify`}>Cada pergunta do quiz há somente 3 alternativas.</Text>
-          <Text style={tw`text-white text-lg text-justify`}>O seu progresso será mostrado no topo.</Text>
+        <View style={tw`bg-blue-800 p-4 rounded-lg w-95 items-center justify-center `}>
+          <Text style={tw`text-white text-lg text-justify text-center`}>Cada pergunta do quiz tem apenas três alternativas e uma correta.</Text>
+          <Text style={tw`text-white  text-lg text-justify`}>Seu progresso será exibido no topo.</Text>
           <Text style={tw`text-white text-lg text-justify`}>Você verá a sua pontuação no final do quiz.</Text>
         </View>
 
