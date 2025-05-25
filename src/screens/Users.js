@@ -32,9 +32,9 @@ export default function Users() {
     }
   };
   //Função que sobe os dados para o banco (É chamada em um loop mais abaixo)
-  const UpdateItems = async ({ id, name, email, phone }) => {
+  const UpdateItems = async ({ id, name, email, phone, game }) => {
     try {
-      const data = { id, name, email, phone };
+      const data = { id, name, email, phone, game };
       const response = await fetch("https://nasago.bubbleapps.io/version-test/api/1.1/wf/form_totem", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -51,7 +51,7 @@ export default function Users() {
 //Função que ocorre em cada item do Storge do smarthpone para e manda para o banco
   const loopUpdateItems = async () => {
     for (let item of users) {
-      await UpdateItems({ id: item.id, name: item.name, email: item.email, phone: item.phone });
+      await UpdateItems({ id: item.id, name: item.name, email: item.email, phone: item.phone, game:"Quiz" });
     }
     Alert.alert("Dados enviados com sucesso!");
   };
@@ -63,7 +63,7 @@ export default function Users() {
       id,
       name: String(user.name),
       email: String(user.email),
-      phone: String(user.phone)
+      phone: String(user.phone),
     }));
     setUsers(response); //Pega todos os dados presente no Storge e manda pra varivável Users
 
