@@ -6,7 +6,7 @@ import * as SQLite from 'expo-sqlite';
 const db = SQLite.openDatabaseSync("database.db");
 
 //Cria a varibável que iremos usar de referência para manipular a tabela de usera no TinyBase e no SQLite
-const TABLE_NAME = "users";
+const TABLE_NAME = "usersQuestionario";
 
 //Cria um banco de dados na memórioa do tinybase
 const store = createStore();
