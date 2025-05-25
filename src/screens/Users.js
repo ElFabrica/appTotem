@@ -9,7 +9,7 @@ export default function Users() {
   const [uploadModalVisible, setUploadModalVisible] = useState(false);
   const [password, setPassword] = useState('');
 
-  const CORRECT_KEY = "Fala1234@";
+  const CORRECT_KEY = "Fala1234@";//Top Senhas
 
   const handleClear = async () => {
     try {
@@ -21,7 +21,7 @@ export default function Users() {
       Alert.alert("Erro", "Não foi possível limpar os dados.");
     }
   };
-
+  //Função que verifica a senha para limpar dos dados
   const handleClearConfirmation = () => {
     if (password === CORRECT_KEY) {
       handleClear();
@@ -31,7 +31,7 @@ export default function Users() {
       Alert.alert("Senha incorreta", "A chave digitada está incorreta.");
     }
   };
-
+  //Função que sobe os dados para o banco (É chamada em um loop mais abaixo)
   const UpdateItems = async ({ id, name, email, phone }) => {
     try {
       const data = { id, name, email, phone };
@@ -48,14 +48,15 @@ export default function Users() {
       console.error('Erro:', error);
     }
   };
-
+//Função que ocorre em cada item do Storge do smarthpone para e manda para o banco
   const loopUpdateItems = async () => {
     for (let item of users) {
       await UpdateItems({ id: item.id, name: item.name, email: item.email, phone: item.phone });
     }
     Alert.alert("Dados enviados com sucesso!");
   };
-
+  
+    //Função que pega os dados do storge da tabela "TABLE_NAME"
   const get = () => {
     const data = store.getTable(TABLE_NAME);
     const response = Object.entries(data).map(([id, user]) => ({
@@ -64,7 +65,8 @@ export default function Users() {
       email: String(user.email),
       phone: String(user.phone)
     }));
-    setUsers(response);
+    setUsers(response); //Pega todos os dados presente no Storge e manda pra varivável Users
+
    /*console.log('📦 Dados atuais:', data); //Mostrar dados no console*/
   };
 

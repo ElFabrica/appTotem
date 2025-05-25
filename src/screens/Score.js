@@ -35,7 +35,7 @@ export default function Score({ navigation }) {
     }
     navigation.navigate("Home");
   }
-
+  
   return (
     <View style={tw`flex-1 items-center justify-center px-4`}>
       <Image
@@ -56,6 +56,7 @@ export default function Score({ navigation }) {
         Sua pontuação foi {score} pontos
       </Text>
 
+      {/*Botão de voltar*/}
       <Pressable style={tw`bg-blue-800 p-4 rounded-md mt-6`} onPress={voltar}> 
         <Text style={tw`text-white text-lg text-center font-bold text-2xl`}>
           Voltar

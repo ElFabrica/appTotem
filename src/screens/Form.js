@@ -14,6 +14,7 @@ export default function Form({ navigation }) {
   const [phone, setPhone] = useState("");
   const [loaded, setLoaded] = useState(false);
 
+  //Ao carregar a página, ele inicializa o storge
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -22,6 +23,7 @@ export default function Form({ navigation }) {
         console.log("Store pronto!");
         setLoaded(true);  // Atualize o estado para refletir que o banco foi carregado
       } catch (e) {
+        //Se der merda em alguma coisa, vai avisae eu e o usuário
         console.error("Erro ao inicializar banco:", e);
         Alert.alert("Erro", "Não foi possível carregar o banco de dados.");
       }
@@ -29,25 +31,26 @@ export default function Form({ navigation }) {
     loadData();
   }, []);
 
+  //Função que salva o formulário no storge do smartphone
   function onSubmit() {
-    if (!loaded) {
+    if (!loaded) { //Verifica se o banco inicializou corretamente
       Alert.alert("Aguarde", "O banco de dados ainda está carregando...");
       return;
     }
-
+      //Valida de algum dos dados estão vazios
     if (!(name && email && phone)) {
       Alert.alert("Erro", "Preencha todos os dados");
       return;
     }
-
+      //Valida se o email é um email válido (Não verifica se o email existe)
     if (!validator.validate(email)) {
       Alert.alert("Erro", "E-mail inválido");
       return;
     }
-
+    //Caso funcione tudo redondo
     const id = Math.random().toString(30).substring(2, 20);  // Gerar ID único
     try {
-      // Tente adicionar a linha ao store e verificar se houve erro
+      // adicionar a linha ao store
       store.setRow(TABLE_NAME, id, { name, email, phone });
       console.log("Usuário adicionado ao banco com sucesso");
       

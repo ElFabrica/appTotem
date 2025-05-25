@@ -1,8 +1,8 @@
-export const reactQuestions =  [
-
+export const reactQuestions =  [ //Aqui você adiciona todas as perguntas do quiz, acho que ai abaixo é auto explicativo
+//Lembrando que esse "correctAnswer" deve ser exatamente igual a alternativa correta
   {
     "id": 1,
-    "title": "1. Qual destas características é típica da energia eólica no Piauí?",
+    "title": "Qual destas características é típica da energia eólica no Piauí?",
     "option": [
       "A) Baixo potencial de ventos durante o ano",
       "B) Alta concentração de parques no litoral e no interior",
@@ -12,7 +12,7 @@ export const reactQuestions =  [
   },
   {
     "id": 2,
-    "title": "2. Qual município piauiense abriga um dos maiores complexos de energia solar da América Latina?",
+    "title": "Qual município piauiense abriga um dos maiores complexos de energia solar da América Latina?",
     "option": [
       "A) Floriano",
       "B) São João do Piauí",
@@ -22,7 +22,7 @@ export const reactQuestions =  [
   },
   {
     "id": 3,
-    "title": "3. O que é hidrogênio verde?",
+    "title": "O que é hidrogênio verde?",
     "option": [
       "A) Hidrogênio obtido por fusão nuclear",
       "B) Hidrogênio produzido com energia fóssil",
@@ -32,7 +32,7 @@ export const reactQuestions =  [
   },
   {
     "id": 4,
-    "title": "4. A transição energética busca substituir fontes fósseis por fontes...",
+    "title": "A transição energética busca substituir fontes fósseis por fontes...",
     "option": [
       "A) Não renováveis",
       "B) Intermitentes",
@@ -42,7 +42,7 @@ export const reactQuestions =  [
   },
   {
     "id": 5,
-    "title": "5. Qual destes é um exemplo de inovação tecnológica voltada à energia limpa?",
+    "title": "Qual destes é um exemplo de inovação tecnológica voltada à energia limpa?",
     "option": [
       "A) Carvão ativado",
       "B) Paineis solares bifaciais",

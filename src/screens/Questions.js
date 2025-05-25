@@ -1,24 +1,40 @@
-import { useState, useEffect, useRef } from "react";
-import { View, Text, Pressable, Image, Alert, Modal } from "react-native";
+import { useState, useEffect } from "react";
+import { View, Text, Pressable, Image, Modal } from "react-native";
 import React from "react";
 import { reactQuestions } from "../config/question";
 import tw from "twrnc";
 import * as Progress from 'react-native-progress';
 
 const Questions = ({ navigation }) => {
+  const [shuffledQuestions, setShuffledQuestions] = useState([]); // Estado que guarda as perguntas embaralhadas
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
+  // 🔀 Função para embaralhar array (Fisher-Yates Shuffle)
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
 
-  //Vai para a próxima pergunta com alguams funcionalidades
+  // 🚀 Embaralhar perguntas na primeira renderização
+  useEffect(() => {
+    const randomizedQuestions = shuffleArray(reactQuestions);
+    setShuffledQuestions(randomizedQuestions);
+  }, []);
+
+  //Função que vai pra próxima pergunta
   const handleNext = () => {
-    if (currentQuestionIndex === reactQuestions.length - 1) {
-      navigation.navigate("Score", { score: score }); //Se for a ultima pergunta, redireciona para a página de Score
+    if (currentQuestionIndex === shuffledQuestions.length - 1) {
+      navigation.navigate("Score", { score: score }); //Se for a ultima pergunta, redireciona para a página de Score e manda como parâmetro a pontuação do usuário
     } else {
-      if (!selectedOption) {
+      if (!selectedOption) { //Verifica se o usuário já selecionou alguma alternativa
         return;
       }
       setCurrentQuestionIndex(currentQuestionIndex + 1); //Vai para a próxima pergunta
@@ -27,50 +43,67 @@ const Questions = ({ navigation }) => {
     }
   };
 
+  //Função de clicar na opção e recebe a opção como parâmetro
   const handleOptionPress = (pressedOption) => {
-    if (selectedOption) {
+    if (selectedOption) { //Verifica se já foi clicado
       return;
     }
-    setSelectedOption(pressedOption);
-    const isAnwserCorrect = reactQuestions[currentQuestionIndex].correctAnswer === pressedOption;
+    setSelectedOption(pressedOption); //Salva a opção selecionada
+    const isAnwserCorrect =
+      shuffledQuestions[currentQuestionIndex].correctAnswer === pressedOption;
     setIsCorrect(isAnwserCorrect);
 
-    if (isAnwserCorrect) {
+    if (isAnwserCorrect) { //Se a opção for correta, ele adiciona mais 20 pontos
       setScore((prevScore) => prevScore + 20);
     }
   };
 
+  //Chama o popup de desistir do quiz
   const handleExit = () => {
-
     setModalVisible(false);
     navigation.navigate("Home");
   };
+
+  //🔄 Enquanto carrega as perguntas, mostra uma tela de loading
+  if (shuffledQuestions.length === 0) {
+    return (
+      <View style={tw`flex-1 justify-center items-center`}>
+        <Text>Carregando perguntas...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={tw`p-4 flex-1`}>
       <View style={tw`w-full items-center mb-5 mt-8 justify-center`}>
         <Progress.Bar
           color="rgb(59 130 246)"
-          progress={(currentQuestionIndex + 1) / reactQuestions.length}
+          progress={(currentQuestionIndex + 1) / shuffledQuestions.length}
           width={400}
           height={15}
           borderColor="#ccc"
         />
+        {/* ✅ Texto de progresso "Pergunta X de Y" */}
+        <Text style={tw`text-base mt-2 text-gray-700 font-semibold`}>
+          Pergunta {currentQuestionIndex + 1} de {shuffledQuestions.length}
+        </Text>
       </View>
 
+      {/*Título da pergunta com o index da pergunta (Ex.: 2.Pergunta...) */}
       <Text style={tw`text-2xl mb-4`}>
-        {reactQuestions[currentQuestionIndex].title}
+        {`${currentQuestionIndex + 1}.${shuffledQuestions[currentQuestionIndex].title}`}
       </Text>
 
-      {reactQuestions[currentQuestionIndex].option.map((option, index) => (
+      {/*Renderização de todas as perguntas de forma escalável, ou seja, pode adicionar quantas alternativas quiser lá em "questions.js" */}
+      {shuffledQuestions[currentQuestionIndex].option.map((option, index) => (
         <Pressable
           key={index}
-          style={tw`border-2 border-purple-500 p-4 m-2 rounded-md ${
+          style={tw`border-2 p-4 m-2 rounded-md ${
             selectedOption === option
               ? isCorrect
-                ? "bg-green-100 border-green-500"
-                : "bg-red-100 border-red-500"
-              : "border-blue-500"
+                ? "bg-green-100 border-green-500" //Verifica se está correta
+                : "bg-red-100 border-red-500" //Verifica se está errada
+              : "border-blue-500" //Valor padrão
           }`}
           onPress={() => {
             handleOptionPress(option);
@@ -80,6 +113,7 @@ const Questions = ({ navigation }) => {
         </Pressable>
       ))}
 
+      {/*Botão da próxima pergunta*/}
       <Pressable
         style={tw`bg-blue-800 p-4 rounded-md mt-6 ${
           selectedOption ? "opacity-100" : "opacity-60"
@@ -87,7 +121,7 @@ const Questions = ({ navigation }) => {
         onPress={handleNext}
       >
         <Text style={tw`text-white text-lg text-center font-bold`}>
-          {currentQuestionIndex === reactQuestions.length - 1
+          {currentQuestionIndex === shuffledQuestions.length - 1
             ? "Finalizar"
             : "Próximo"}
         </Text>
@@ -127,8 +161,6 @@ const Questions = ({ navigation }) => {
               >
                 <Text style={tw`text-white font-bold`}>Sim</Text>
               </Pressable>
-
-
             </View>
           </View>
         </View>
