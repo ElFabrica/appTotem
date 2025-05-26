@@ -3,5 +3,5 @@ Um App direcionado para usuários que quererm que precisam de um formulário e q
 -> Basta copiar o projeto 
 -> entrar na pasta 
 -> usar o comando "npm install" 
--> usar outro comando npx expo start 
+-> usar outro comando "npx expo start" 
 -> e ser feliz
