@@ -7,7 +7,6 @@ import LottieView from 'lottie-react-native';
 import { store, TABLE_NAME, initializeStore } from "../config/store.js"; // ✅ import externo
 import MaskInput from 'react-native-mask-input'
 
-
 export default function Form({ navigation }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

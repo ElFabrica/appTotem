@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Alert, TextInput, Modal } from 'react-native';
+import { View, Text, Pressable, Alert, TextInput, Modal, FlatList,StyleSheet } from 'react-native';
 import { useEffect, useState } from 'react';
 import tw from 'twrnc';
 import { store, TABLE_NAME, initializeStore, clearTable } from "../config/store";
@@ -85,7 +85,7 @@ export default function Users() {
 
   return (
     <View style={tw`flex-1 items-center mt-8 px-4`}>
-      <Text style={tw`text-xl font-medium`}>Inscritos</Text>
+      <Text style={tw`text-xl font-medium`}>{users.length} Inscritos</Text>
       <View style={tw`mt-6 w-full`}>
         {users.length > 0 && (
           <View style={tw`flex-row justify-between items-center`}>
@@ -94,23 +94,26 @@ export default function Users() {
             <Text style={tw`text-base text-center min-w-30`}>Telefone</Text>
           </View>
         )}
-
-        {users.length > 0 ? (
-          users.map((item) => (
+        <View style={{height: "84%"}}>
+        <FlatList
+          data={users}
+          keyExtractor={(item) => item.id}
+          renderItem={({item}) =>(
             <View key={item.id} style={tw`flex-row justify-between`}>
               <Text style={tw`text-base text-center min-w-30`}>{item.name}</Text>
               <Text style={tw`text-base text-center min-w-30`}>{item.email}</Text>
               <Text style={tw`text-base text-center min-w-30`}>{item.phone}</Text>
             </View>
-          ))
-        ) : (
-          <Text style={tw`text-center text-base`}>
-            Nenhum dado encontrado...
-          </Text>
-        )}
-
+        )
+        }
+         showsVerticalScrollIndicator= {true}
+         ListEmptyComponent={() =>  <Text style={tw`text-center text-base`}>Nenhum dado encontrado...</Text>}
+         contentContainerStyle={{paddingTop: 10, paddingBottom: 10}}
+        />
+      </View>
+        {/*Footer*/}
         {users.length > 0 && (
-          <View style={tw`flex-row justify-center gap-4 mt-4`}>
+          <View style={tw`flex-row absolute items-center justify-center gap-4 mt-4 bottom-5 left-5 right-5`}>
             <Pressable
               style={tw`bg-purple-500 p-4 rounded-md`}
               onPress={() => setUploadModalVisible(true)}
